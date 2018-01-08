@@ -15,7 +15,7 @@ class BooksApp extends React.Component {
      */
 
     books: [],
-    searchBooks: [],
+    foundBooks: [],
     showSearchPage: false
   }
 
@@ -38,7 +38,7 @@ class BooksApp extends React.Component {
     updatebooks[i].shelf = value;
 
     this.setState((state) => ({
-      searchBooks: updatebooks
+      books: updatebooks
     }))
 
   }
@@ -46,7 +46,7 @@ class BooksApp extends React.Component {
   searchBook = (query) => {
     BooksAPI.search(query).then((books) => {
       this.setState({
-        search : books
+        foundBooks : books
       })
     })
   }
@@ -64,7 +64,9 @@ class BooksApp extends React.Component {
 
       <Route path="/search" render={({ history }) =>
         <BookSearch
-
+          searchBooks={this.searchBook}
+          onMoveBook={this.moveBook}
+          books={this.state.foundBooks}
         />
       }/>
         <div className="open-search">

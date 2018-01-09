@@ -12,18 +12,13 @@ class BookSearch extends Component {
   }
 
   state = {
-    query: '',
-    prevQuery: ''
+    query: ''
   }
 
   updateQuery = (query) => {
 
-    const { prevQuery } = this.state
-
-    if (prevQuery !== query) {
       this.props.searchBooks(query)
       this.setState({ query })
-    }
   }
 
   clearQuery = () => {

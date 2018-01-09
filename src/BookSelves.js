@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import BookSelf from './BookSelf'
 
@@ -37,6 +38,9 @@ class BooksSelf extends Component {
               onMoveBook={onMoveBook}
             />
           </div>
+        </div>
+        <div className="open-search">
+          <Link to="/search"></Link>
         </div>
       </div>
     )

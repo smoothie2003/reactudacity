@@ -14,7 +14,8 @@ class BookGrid extends Component {
 
     return (
       <ol className="books-grid">
-        {books.map((book) => (
+
+        { books.map((book) => (
           <li key={book.id}>
             <div className="book">
                 <div className="book-top">
@@ -31,7 +32,7 @@ class BookGrid extends Component {
                 </div>
               </div>
               <div className="book-title">{book.title}</div>
-              <div className="book-authors">{book.authors.join(", ")}</div>
+              <div className="book-authors">{book.authors.length < 1 ? book.authors : book.authors.join(", ")}</div>
             </div>
           </li>
 

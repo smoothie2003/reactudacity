@@ -1,8 +1,6 @@
-# MyReads Project
+# Varun's MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
-
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+This is the completed project for the MyReads Project for the udacity react fundamental's course.
 
 ## TL;DR
 
@@ -22,9 +20,13 @@ To get started developing right away:
 │   └── index.html # DO NOT MODIFY
 └── src
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── App.js # This is the root of the app.
+    ├── BookGrid.js # BookGrid Component, used by BookSelf and Search components to render Books
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+    ├── BookSearch.js # BookSearch Component, used by App Component for rendering search page.
+    ├── BookSelf.js # BooksSelf Component, used by BookSelves component for different shelves.
+    ├── BookSelves.js # BookSelves Component, used by App Component for rendering the Selves page.
+    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
     │   ├── arrow-back.svg
@@ -32,8 +34,6 @@ To get started developing right away:
     ├── index.css # Global styles. You probably won't need to change anything here.
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
 ```
-
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
 
 ## Backend Server
 
@@ -87,6 +87,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository is for my submission for the React Fundamental's project. Pull Request will be reviewed for future use.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).

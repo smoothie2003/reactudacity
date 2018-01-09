@@ -1,39 +1,39 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
-import BookSelves from './BookSelves'
-import BookSearch from './BookSearch'
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import * as BooksAPI from './BooksAPI';
+import './App.css';
+import BookShelves from './BookShelves';
+import BookSearch from './BookSearch';
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
     books: [],
-    foundBooks: [],
-  }
+    foundBooks: []
+  };
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
+
       this.setState({
         books : books
       })
 
     })
-  }
+  };
 
   moveBook = (book, value) => {
 
-    BooksAPI.update(book, value)
+    BooksAPI.update(book, value).then(shelves => {
 
-    var updatebooks = this.state.books
+      BooksAPI.getAll().then(updateBooks => {
+        this.setState({
+          books: updateBooks
+        })
+      })
 
-    var i = updatebooks.findIndex(b => b.id === book.id)
-    updatebooks[i].shelf = value;
+    })
 
-    this.setState((state) => ({
-      books: updatebooks
-    }))
-
-  }
+  };
 
   searchBook = (query) => {
     BooksAPI.search(query).then((books) => {
@@ -50,13 +50,13 @@ class BooksApp extends React.Component {
         }
       }
     })
-  }
+  };
 
   render() {
     return (
       <div className="app">
         <Route exact path="/" render={(history) => (
-          <BookSelves
+          <BookShelves
             books={this.state.books}
             onMoveBook={this.moveBook}
           />
@@ -67,12 +67,13 @@ class BooksApp extends React.Component {
         <BookSearch
           searchBooks={this.searchBook}
           onMoveBook={this.moveBook}
-          books={this.state.foundBooks}
+          foundBooks={this.state.foundBooks}
+          shelfBooks={this.state.books}
         />
       }/>
       </div>
     )
   }
-}
+};
 
-export default BooksApp
+export default BooksApp;

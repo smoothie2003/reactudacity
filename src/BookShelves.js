@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import BookSelf from './BookSelf'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import BookShelf from './BookShelf';
 
-class BooksSelf extends Component {
+class BookShelves extends Component {
 
   static propTypes = {
     books: PropTypes.array.isRequired,
     onMoveBook: PropTypes.func.isRequired
-  }
+  };
 
 
   render() {
@@ -22,17 +22,17 @@ class BooksSelf extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <BookSelf
+            <BookShelf
               books={books.filter(book => book.shelf === "currentlyReading")}
               title="Currently Reading"
               onMoveBook={onMoveBook}
             />
-            <BookSelf
+            <BookShelf
               books={books.filter(book => book.shelf === "wantToRead")}
               title="Want to Read"
               onMoveBook={onMoveBook}
             />
-            <BookSelf
+            <BookShelf
               books={books.filter(book => book.shelf === "read")}
               title="Read"
               onMoveBook={onMoveBook}
@@ -45,8 +45,8 @@ class BooksSelf extends Component {
       </div>
     )
   }
-}
+};
 
 
 
-export default BooksSelf
+export default BookShelves;

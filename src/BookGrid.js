@@ -1,16 +1,29 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class BookGrid extends Component {
 
   static propTypes = {
     books: PropTypes.array.isRequired,
+    shelfBooks: PropTypes.array,
     onMoveBook: PropTypes.func.isRequired
-  }
+  };
+
+    determineShelf = (book, shelfBooks) => {
+
+        if(book.shelf) {
+            return book.shelf
+        } else if(shelfBooks && shelfBooks.findIndex(b => b.id === book.id) !== -1){
+            var i = shelfBooks.findIndex(b => b.id === book.id)
+            return shelfBooks[i].shelf
+        } else {
+            return "none"
+        }
+    };
 
   render() {
 
-    const { books, onMoveBook } = this.props
+    const { books, onMoveBook, shelfBooks } = this.props
 
     return (
       <ol className="books-grid">
@@ -22,8 +35,9 @@ class BookGrid extends Component {
                   <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
                   </div>
                   <div className="book-shelf-changer">
-                    <select value={book.shelf} onChange={(event) => onMoveBook(book, event.target.value)}>
-                      <option value="none" disabled>Move to...</option>
+                    <select value={this.determineShelf(book, shelfBooks)}
+                            onChange={(event) => onMoveBook(book, event.target.value)}>
+                      <option value="Move To" disabled>Move to...</option>
                       <option value="currentlyReading">Currently Reading</option>
                       <option value="wantToRead">Want to Read</option>
                       <option value="read">Read</option>
@@ -40,7 +54,7 @@ class BookGrid extends Component {
       </ol>
 
     )
-  }
+  };
 }
 
-export default BookGrid
+export default BookGrid;

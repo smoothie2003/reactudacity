@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import BookGrid from './BookGrid'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import BookGrid from './BookGrid';
 
-class BookSelf extends Component {
+class BookShelf extends Component {
 
   static propTypes = {
     books: PropTypes.array.isRequired,
     title: PropTypes.string.isRequired,
     onMoveBook: PropTypes.func.isRequired
-  }
+  };
 
   render() {
 
@@ -26,6 +26,6 @@ class BookSelf extends Component {
       </div>
     )
   }
-}
+};
 
-export default BookSelf
+export default BookShelf;
